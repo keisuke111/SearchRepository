@@ -13,7 +13,6 @@ import SwiftyJSON
 class TableViewController: UITableViewController, UISearchBarDelegate {
     
     @IBOutlet var repositoryTableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
     
     // 遷移先のvcに渡す変数
     var giveData: String = ""
@@ -28,8 +27,6 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchBar.delegate = self
-        
         DispatchQueue.global().async {
             self.getRepository()
             DispatchQueue.main.async {
@@ -39,7 +36,6 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
         
         repositoryTableView.delegate = self
         repositoryTableView.dataSource = self
-        
     }
     
     // MARK: - Search Bar Delegate
@@ -58,7 +54,7 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
         print("search")
         
         // 空検索を弾く
-        if searchBar.text == "" {
+        guard searchBar.text != "" else {
             return
         }
         
@@ -107,6 +103,24 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
         
         // 遷移
         performSegue(withIdentifier: "Segue", sender: nil)
+    }
+    
+    // Header Size
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
+    }
+    
+    // Header View
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        // Search Bar
+        let searchBar = UISearchBar()
+        searchBar.delegate = self
+        searchBar.placeholder = "language"
+        searchBar.showsCancelButton = true
+        searchBar.showsSearchResultsButton = true
+        
+        return searchBar
     }
 
     /*
@@ -158,7 +172,7 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     
-    // MARK - Function
+    // MARK: - Function
     
     func getRepository(language: String = "swift") {
         
@@ -197,6 +211,14 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
                     
                     // 配列に格納
                     self.repositories.append(Repository(fullName, description!, stars, htmlUrl))
+                }
+                
+                // 検索結果が0件の時にアラートを表示
+                if self.repositories.count == 0 {
+                    let alert = UIAlertController(title: "" ,message: "0 results", preferredStyle: UIAlertController.Style.alert)
+                    let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+                    alert.addAction(okButton)
+                    self.present(alert, animated: true, completion: nil)
                 }
                 
                 self.semaphore.signal()

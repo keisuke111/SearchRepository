@@ -18,14 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="language" showsCancelButton="YES" id="JQr-VI-sSq">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" rowHeight="100" id="5Q2-8x-Cph" customClass="TableViewCell" customModule="SearchRepository" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="84" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Q2-8x-Cph" id="Pr8-FK-vlf">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="99.5"/>
@@ -85,7 +80,6 @@
                     <navigationItem key="navigationItem" title="Repositories" id="6KE-V5-aQT"/>
                     <connections>
                         <outlet property="repositoryTableView" destination="EUX-Mf-V3g" id="Flf-ua-5IM"/>
-                        <outlet property="searchBar" destination="JQr-VI-sSq" id="xXo-7f-qtP"/>
                         <segue destination="mNF-lZ-ZNS" kind="show" identifier="Segue" id="uhU-wv-RwS"/>
                     </connections>
                 </tableViewController>
