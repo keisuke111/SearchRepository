@@ -8,7 +8,8 @@ githubリポジトリ検索アプリ
 
 ## Description
 searchBarに入力された言語のリポジトリをスター順に表示  
-表示されたリポジトリをタップでgithub（web）を開く
+表示されたリポジトリをタップでgithub（web）を開く  
+起動時はswift言語のリポジトリが表示される
 
 ## Install
 ```
