@@ -8,18 +8,11 @@
 
 import UIKit
 
-class Repository {
+struct Repository {
     
     var fullName: String
     var description: String
     var stars: Int
     var htmlUrl: String
-    
-    init(_ fullName: String, _ description: String, _ stars: Int, _ htmlUrl: String) {
-        self.fullName = fullName
-        self.description = description
-        self.stars = stars
-        self.htmlUrl = htmlUrl
-    }
 
 }
